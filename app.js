@@ -1,4 +1,4 @@
-const API_URL = "https://gamezone-backend-1.onrender.com";
+cconst API_URL = "https://gamezone-backend-1.onrender.com/videojuegos";
 
 // Mostrar videojuegos
 async function obtenerVideojuegos(){
