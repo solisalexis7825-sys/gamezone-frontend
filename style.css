@@ -1,0 +1,45 @@
+body{
+    background:#121212;
+    color:white;
+    font-family:Arial;
+}
+
+.container{
+    width:90%;
+    margin:auto;
+}
+
+h1{
+    text-align:center;
+}
+
+form{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    margin-bottom:20px;
+}
+
+input{
+    padding:10px;
+}
+
+button{
+    padding:10px;
+    background:#0066ff;
+    color:white;
+    border:none;
+    cursor:pointer;
+}
+
+table{
+    width:100%;
+    background:white;
+    color:black;
+    border-collapse:collapse;
+}
+
+th,td{
+    border:1px solid #ddd;
+    padding:10px;
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GameZone</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+<h1>🎮 GameZone</h1>
+
+<form id="formJuego">
+
+<input type="text" id="nombre" placeholder="Nombre del juego" required>
+
+<input type="text" id="genero" placeholder="Género" required>
+
+<input type="text" id="plataforma" placeholder="Plataforma" required>
+
+<input type="number" id="precio" placeholder="Precio" required>
+
+<input type="text" id="desarrollador" placeholder="Desarrollador" required>
+
+<button type="submit">
+Guardar Videojuego
+</button>
+
+</form>
+
+<table>
+
+<thead>
+<tr>
+<th>Nombre</th>
+<th>Género</th>
+<th>Plataforma</th>
+<th>Precio</th>
+<th>Desarrollador</th>
+<th>Acciones</th>
+</tr>
+</thead>
+
+<tbody id="tabla"></tbody>
+
+</table>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
