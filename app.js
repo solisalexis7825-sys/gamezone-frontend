@@ -1,14 +1,12 @@
 const API_URL = "https://gamezone-backend-1.onrender.com/videojuegos";
 
 // Mostrar videojuegos
-async function obtenerVideojuegos(){
+async function obtenerVideojuegos() {
 
     const res = await fetch(API_URL);
-
     const datos = await res.json();
 
     const tabla = document.getElementById("tabla");
-
     tabla.innerHTML = "";
 
     datos.forEach(juego => {
@@ -37,73 +35,75 @@ async function obtenerVideojuegos(){
 
 // Guardar videojuego
 document.getElementById("formJuego")
-.addEventListener("submit", async (e)=>{
+.addEventListener("submit", async (e) => {
 
     e.preventDefault();
 
     const juego = {
-
         nombre: document.getElementById("nombre").value,
-
         genero: document.getElementById("genero").value,
-
         plataforma: document.getElementById("plataforma").value,
-
-        precio: Number(
-            document.getElementById("precio").value
-        ),
-
-        desarrollador:
-        document.getElementById("desarrollador").value
+        precio: Number(document.getElementById("precio").value),
+        desarrollador: document.getElementById("desarrollador").value
     };
 
-    await fetch(API_URL,{
-        method:"POST",
-        headers:{
-            "Content-Type":"application/json"
+    await fetch(API_URL, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
         },
-        body:JSON.stringify(juego)
+        body: JSON.stringify(juego)
     });
 
     document.getElementById("formJuego").reset();
-
     obtenerVideojuegos();
 });
 
-// Editar
-async function editarJuego(id){
+
+// ✅ EDITAR CORREGIDO (YA ACTUALIZA TODO)
+async function editarJuego(id) {
 
     const nombre = prompt("Nuevo nombre:");
+    const genero = prompt("Nuevo género:");
+    const plataforma = prompt("Nueva plataforma:");
+    const precio = prompt("Nuevo precio:");
+    const desarrollador = prompt("Nuevo desarrollador:");
 
-    if(!nombre) return;
+    if (!nombre || !genero || !plataforma || !precio || !desarrollador) {
+        alert("Todos los campos son obligatorios");
+        return;
+    }
 
-    await fetch(`${API_URL}/${id}`,{
-
-        method:"PUT",
-
-        headers:{
-            "Content-Type":"application/json"
+    await fetch(`${API_URL}/${id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
         },
-
-        body:JSON.stringify({
-            nombre
+        body: JSON.stringify({
+            nombre,
+            genero,
+            plataforma,
+            precio: Number(precio),
+            desarrollador
         })
     });
 
     obtenerVideojuegos();
 }
 
+
 // Eliminar
-async function eliminarJuego(id){
+async function eliminarJuego(id) {
 
-    if(confirm("¿Eliminar videojuego?")){
+    if (confirm("¿Eliminar videojuego?")) {
 
-        await fetch(`${API_URL}/${id}`,{
-            method:"DELETE"
+        await fetch(`${API_URL}/${id}`, {
+            method: "DELETE"
         });
 
         obtenerVideojuegos();
     }
 }
 
+// Inicializar tabla
 obtenerVideojuegos();
